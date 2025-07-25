@@ -32,7 +32,11 @@ $$\   $$ |$$ |     $$  __$$ |$$ |  $$ |$$ |  $$  __$$ |$$ |      $$   ____|$$ |
 
 Made by Ze1glerf | GitHub : Ze1glerf
 """
-print(ASCII_ART)
+
+GREEN = "\033[32m"
+RESET = "\033[0m"
+
+print(GREEN + ASCII_ART + RESET)
 
 visited_urls = set()
 discovered_links = []
