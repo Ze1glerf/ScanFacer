@@ -6,13 +6,20 @@ ScanFacer - Interactive Website Scanner
 Author: Ze1glerf
 """
 
+import os
 import requests
 from bs4 import BeautifulSoup
 from urllib.parse import urlparse, urljoin
 from datetime import datetime
 import time
-import os
 
+# ---------------------- Clear Console --------------------------
+def clear_console():
+    os.system('clear' if os.name == 'posix' else 'cls')
+
+clear_console()
+
+# ---------------------- ASCII Art Banner --------------------------
 ASCII_ART = r"""
  $$$$$$\                               $$$$$$$$\                                     
 $$  __$$\                              $$  _____|                                    
@@ -25,7 +32,6 @@ $$\   $$ |$$ |     $$  __$$ |$$ |  $$ |$$ |  $$  __$$ |$$ |      $$   ____|$$ |
 
 Made by Ze1glerf | GitHub : Ze1glerf
 """
-
 print(ASCII_ART)
 
 visited_urls = set()
