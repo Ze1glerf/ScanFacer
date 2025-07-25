@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """
-ScanFacer - Interactive Website Scanner
+ScanFacer - Interactive Website Scanner with Optional Zero Delay
 Author: Ze1glerf
 """
 
@@ -58,7 +58,10 @@ def crawl(url: str, delay_seconds: float, depth: int = 3, base_domain: str = "")
 
     try:
         response = requests.get(url, timeout=10)
-        time.sleep(delay_seconds)
+        
+        # Delay only if delay_seconds > 0
+        if delay_seconds > 0:
+            time.sleep(delay_seconds)
 
         if "text/html" not in response.headers.get("Content-Type", ""):
             return
@@ -105,12 +108,12 @@ def main():
     else:
         protocol = "https"
 
-    delay_input = input("⏱️ Delay between requests in seconds? [Recommended: 20]: ").strip()
+    delay_input = input("⏱️ Delay between requests in seconds? (0 for no delay, recommended 20): ").strip()
     try:
         delay_seconds = float(delay_input) if delay_input else 20.0
-        if delay_seconds < 1:
-            print("⚠️ Too fast! Using minimum delay of 1 second.")
-            delay_seconds = 1.0
+        if delay_seconds < 0:
+            print("⚠️ Negative delay not allowed. Using default 20 seconds.")
+            delay_seconds = 20.0
     except ValueError:
         print("⚠️ Invalid input. Using default delay of 20 seconds.")
         delay_seconds = 20.0
@@ -120,7 +123,7 @@ def main():
         print("[!] Invalid domain or protocol.")
         return
 
-    print(f"\n[•] Starting scan: {full_url}")
+    print(f"\n[•] Starting scan: {full_url} with delay {delay_seconds} seconds")
     crawl(full_url, delay_seconds, base_domain=get_domain(full_url))
     save_to_file(full_url)
 
