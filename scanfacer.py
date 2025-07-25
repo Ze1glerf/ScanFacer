@@ -13,13 +13,13 @@ from urllib.parse import urlparse, urljoin
 from datetime import datetime
 import time
 
-# ---------------------- Clear Console --------------------------
+
 def clear_console():
     os.system('clear' if os.name == 'posix' else 'cls')
 
 clear_console()
 
-# ---------------------- ASCII Art Banner --------------------------
+
 ASCII_ART = r"""
  $$$$$$\                               $$$$$$$$\                                     
 $$  __$$\                              $$  _____|                                    
@@ -59,7 +59,7 @@ def crawl(url: str, delay_seconds: float, depth: int = 3, base_domain: str = "")
     try:
         response = requests.get(url, timeout=10)
         
-        # Delay only if delay_seconds > 0
+        
         if delay_seconds > 0:
             time.sleep(delay_seconds)
 
