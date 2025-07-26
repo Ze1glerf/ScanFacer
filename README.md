@@ -22,3 +22,4 @@
 git clone https://github.com/Ze1glerf/ScanFacer.git
 cd ScanFacer
 pip install -r requirements.txt
+python scanfacer.py
