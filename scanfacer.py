@@ -126,7 +126,8 @@ def main():
     print(f"\n[•] Starting scan for URL: {full_url} | Delay: {delay_seconds} seconds")
     crawl(full_url, delay_seconds, base_domain=get_domain(full_url))
     save_to_file(full_url)
-
+    
 if __name__ == "__main__":
     main()
+
 
